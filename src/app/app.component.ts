@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   };
 
   selectedRecord: CountryPopulation | null = null;
+  formOpen = false;
 
   constructor(private populationService: PopulationService) {
     this.getRecords();
@@ -23,6 +24,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRecords();
+  }
+
+  showUpdateForm(record: CountryPopulation): void {
+    this.selectedRecord = record;
+    this.formOpen = true;
+  }
+
+  hideForm(): void {
+    this.selectedRecord = null;
+    this.formOpen = false;
   }
 
   getRecords(): void {
